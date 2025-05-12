@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flight ATA/ATD</title>
+</head>
+<body>
+  <h1>Flight Info</h1>
+  <input type="text" id="flightNo" placeholder="Enter Flight No" />
+  <button onclick="fetchFlight()">Get ATA/ATD</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function fetchFlight() {
+      const flightNo = document.getElementById("flightNo").value;
+      const res = await fetch(`/api/times/${flightNo}`);
+      const data = await res.json();
+      document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
